@@ -7,6 +7,17 @@ Additional code by many contributors, see the Credits screen
 
 Originally released under the GPL 2.0 (and later) in November 2012
 
+# Table of Contents
+- Socials/Websites
+- About
+- What's new in 1.16.5
+- Download
+- Upcoming
+- Adhoc Support
+- FAQ/Contact
+
+
+# Socials/Links
 Official website: https://www.ppsspp.org/
 
 Discord: https://discord.gg/5NJB6dD
@@ -25,8 +36,10 @@ If you want to download regularly updated builds for Android, Windows x86 and x6
 
 For game compatibility, see [community compatibility feedback](https://report.ppsspp.org/games).
 
-What's new in 1.16.5
-====================
+# About
+PPSSPP is a free, open-source project that allows you to play PSP games on your Android or PC in HD resolution or higher. It includes customizable graphics, saving and recovering game progress, customizable controls, transferable saves from your PSP, and more! 
+
+# What's new in 1.16.5
 - Additional crash and memory-leak fixes ([#18243], [#18244], [#18247])
 - Revert bad change that broke things with hardware transform turned off ([#18261])
 - Fix menu texture problem in Naruto Kizuna Drive in OpenGL ([#18255])
@@ -34,186 +47,27 @@ What's new in 1.16.5
 - More efficient handling of accelerometer events ([#18250])
 - Fix for jumpy graphics in Harvest Moon ([#18249])
 
-What's new in 1.16.4
-====================
-- Simplify shader cache lookups on Vulkan, hopefully fixing some crashes ([#18218])
-- Assorted improvements to the IR JITs ([#18228], [#18235], [#18211], more)
-- Other crash and stability fixes ([#18221], [#18220], [#18230], [#18216])
-- Some translation updates ([#18237], more)
-- Cleanups and assert fixes ([#18205], [#18201], [#18206])
+# Download
+## Android
+```
+cd Android
+./ab.sh
+OR
+./ab.cmd
+```
+Start Eclipse
+Import the android dir as an existing project
+Load the "native" project into eclipse workspace
+Build and run
 
-What's new in 1.16.3
-====================
-- Fix crash bug and performance issue in Vulkan shader cache ([#18183], [#18189])
-- Fix crash in icon loading in homebrew store ([#18185])
-- Add some memory safety check ([#18184], [#18194])
-- Fix problem when changing backend from the Windows menu ([#18182])
+## Windows
 
-What's new in 1.16.2
-====================
-- Fix for HTTP support on Linux on networks with shaky or incomplete IPv6 support
-- Assorted fixes for leaks and crashes ([#18169], [#18151])
-- Fix hang when switching UMD with RetroAchievements enabled ([#18143])
-- Fix math bug in new IR JIT for x86 ([#18165])
-- Minor math optimization -fno-math-errno ([#18158])
-- Fix for software renderer crash
+Open the MSVC project file and build
 
-What's new in 1.16.1
-====================
-
-- Move RetroAchievements to the Tools tab in settings ([#18127])
-- Fix graphics regressions in Hot Shots Golf 2 / Everybody's Golf 2 and Final Fantasy Tactics ([#18142])
-- Fix hang on startup with OpenGL, that happened often if "buffer commands" was set to off.
-- Fix problem with the sc instruction that broke Beats ([#18133], [#18140])
-- Fix problem with the chat window accidentally closing on typing X ([#18135])
-- Fix some crashes, add some asserts and reporting hooks ([#18129])
-- Fix some text rendering in the software renderer ([#18126])
-
-What's new in 1.16
-==================
-Special thanks to unknownbrackets for the new JIT compilers, and fp64 for finally cracking the vrnd instruction.
-
-- RetroAchievements support ([#17589], [#17631], many more). See [RetroAchievements on ppsspp.org](https://www.ppsspp.org/docs/reference/retro-achievements).
-- New JIT backends:
-  - RISC-V, based on IR
-  - x86 JIT based on IR. Often faster than the existing one.
-- Input fixes
-  - Improve behavior when analog and digital inputs clash ([#17960])
-  - Combo mapping is now disabled by default ([#17673])
-  - Android: Better tracking of devices names ([#17562], auto config)
-  - Fix mapping custom touch buttons to analog inputs ([#17433])
-- Rendering performance and fixes
-  - Fix flicker in WWE Smackdown vs Raw 2006 ([#18009]), video flicker in Naruto 2 ([#18008])
-  - Fix bad colors in Syphon Filter: Logan's Shadow menu ([#17965])
-  - On lower-end devices, avoid "uber" shaders due to performance and driver bugs ([#17449], [#17922])
-  - Allow disabling V-sync on Android with Vulkan, more SDL platforms ([#17903], [#18087])
-  - On Vulkan, reduce input lag when "Buffer graphics commands" is set to off ([#17831])
-  - Assorted minor perf ([#17810], [#17505], [#17478], [#17471], [#17452], [#17446], [#17442])
-  - Fix shadows in MotorStorm ([#17602]) (not actually a rendering problem)
-  - Fix rendering issue in Lunar Silver Star ([#17451])
-  - Add a cache for MakePixelsTexture, improving perf in God of War ([#17534])
-  - Lots of software renderer improvements ([#17571], [#17569], [#17619], [#17621], [#17618], [#17609], ...)
-- Networking
-  - HTTPS support now enabled in store and for RA on Windows, Android, Mac, iOS ([#17744], ...)
-  - Ad-hoc: Fix for Metal Gear Acid issue with Link Battle ([#17947])
-- Texture replacement fixes
-  - Fix Tactics Ogre texture issues ([#18001], [#18011])
-  - Fix problem with anisotropic filtering ([#17930])
-  - Fix glitches on D3D11 with KTX2 textures ([#17749])
-- UI changes
-  - Color emoji support on some platforms ([#17854], [#17856])
-  - Use TTF fonts on SDL where available (macOS, Linux/Steam Deck) ([#17844]), support HiDPI ([#17651])
-  - Allow setting the PSP's MAC address directly ([#17755])
-  - Better looking notifications ([#17606], [#17674], [#17672])
-- Cheats
-  - Fix loading cheat dbs on Android devices with scoped storage ([#17834])
-- VR (Quest, other Android VR devices)
-  - Cinema screen mode improvements ([#17704], [#17752])
-  - Quest-only passthrough mode ([#17591])
-  - Cleanups, compatibility fixes, make VR settings per-game ([#17636], [#17656], [#17598], [#17518])
-- Other
-  - Fix horrible audio glitch in After Burner ([#18076])
-  - Emulate the vrnd instruction accurately ([#17506], [#17549])
-  - Fix timing issue causing slowdowns in MLB games ([#17676], [#17677])
-  - UWP keyboard support, many other updates ([#17952], [#17974])
-  - Allow choosing the display resolution on Android again ([#17473])
-  - Fix issue running some file types out of the Download folder on Android ([#17466])
-
-What's new in 1.15.4
-====================
-- Tilt controls: Restore "Low end radius" control ([#17489])
-- Android: Restore the ability to choose "display" (hardware scaler) resolution ([#17473])
-- Improve the workarounds for the DJ Max games ([#17467])
-- Android: Fix running some file formats directly from the Downloads folder ([#17466])
-- OpenGL: Restore most of the lost performance on low-end hardware from the shader variant reduction ([#17440, [#17439]])
-- Add a simple profiling tool to check CPU usage by the GL backend ([#17475])
-- Loader: Fix bug preventing WWE 2009 from starting ([#17435])
-- Misc minor fixes and optimizations ([#17442], [#17457], [#17486], [#17446], more)
-
-What's new in 1.15.3
-====================
-- Assorted minor crash- and other fixes ([#17406], [#17414], [#17415], [#17422])
-- Android: Allow launch by content URI (for frontends) ([#17425])
-- Control mapping: Fix bugs in mapping UI causing trouble with some controllers ([#17412], [#17420])
-
-What's new in 1.15.2
-====================
-- Assorted minor crash fixes ([#17401], [#17399])
-- Fix Android 12 support in the Android VR build (avoid scoped storage) ([#17398])
-
-What's new in 1.15.1
-====================
-- Assorted minor crash fixes ([#17374], [#17370], [#17392], [#17394])
-- Fix for non-png texture replacements when not listed in textures.ini ([#17380])
-- Fix for broken tilt d-pad controls ([#17393])
-- Workaround for Vulkan driver bugs on Mali-T8x0 series GPUs ([#17396])
-
-What's new in 1.15
-==================
-* Stutter caused by shader compilation has been reduced drastically ([#16873])
-  - Parallelization: ([#16802], [#16804], [#16809], [#16812])
-  - Shader variant reduction: ([#16773], [#16778], [#16770], [#16763])
-
-* Rendering performance and fixes
-  - Integer scaling added ([#17224])
-  - Post-processing fixes ([#17262])
-  - SOCOM overlay glitch removed, night vision fixed ([#17297], [#17317])
-  - PowerVR compatibility fixes ([#17232])
-  - CLUT fixes ([#17212])
-  - ToP - Narikiri Dungeon X: Avoid GPU readback ([#17181], [#17191], [#17192])
-  - DTM / Toca: Avoid GPU readback ([#16715])
-  - Fixed Dante's Inferno performance regression ([#17032], [#17035])
-  - Fix wrong device selection on Poco C40 phones, causing broken UI ([#17027], [#17022])
-  - Rainbow Six GPU performance fix ([#16971])
-  - Subtitles fixed in The Godfather ([#17298], [#17314])
-
-* Texture replacement improvements
-  - Less I/O on the main thread, leading to smoother framerates ([#17078], [#17091], [#17120], [#17134])
-  - Support for KTX2 files with UASTC compressed textures added ([#17111] [#17104])
-  - Support for DDS files with BC1-7 textures added ([#17083], [#17103], [#17097], [#17096], [#17095])
-  - Improve default ini ([#17146])
-  - Mipmaps now always used if provided ([#17144])
-  - Additional optimizations ([#17139], [#17088])
-
-* Optimizations
-  - Software renderer fixes and performance ([#17295], [#17214], [#17028], [#16753], [#16706], [#16690])
-  - Vulkan texture upload optimizations ([#17052], [#17122], [#17121], [#17114], [#17011])
-  - Depth readback added, fixing lens flares in Syphon Filter (at perf cost..) ([#16907], [#16905])
-  - Async readback supported in Vulkan - currently only enabled in Dangan Ronpa ([#16910], [#16916])
-  - Lighting shader optimizations ([#16791], [#16787])
-
-* Controls
-  - Android tilt control has been overhauled and fixed ([#16889], [#16896])
-  - You can now map combinations of buttons to single functions ([#17210], [#17215], [#17228], etc)
-  - Custom buttons now support analog inputs ([#16855])
-
-* VR features
-  - Top down camera: ([#17098])
-  - Head rotation control: ([#16857])
-  - More stereo support: ([#16952], [#16953])
-  - Other: ([#16826], [#16821])
-
-* Other
-  - Windows Dark Mode support ([#16704])
-  - GLSL shader compatibility fixes ([#16710], [#16709])
-  - GTA math issue on macOS/iOS fixed, playable again ([#16928])
-  - More accurate VFPU emulation has been added, though not all enabled yet ([#16984])
-  - Debugger features and fixes ([#17270], [#17269], [#17263], [#17260], [#17203], [#17190], [#17042], [#16994], [#16988], [#16818] etc)
-  - Rewind savestates no longer slows things down a lot ([#17291])
-  - Chat window bugfixes ([#17241])
-  - IR Jit fixes - helps iOS when native jit is unavailable ([#17129])
-  - Depth-related rendering fixes ([#17055], [#16880])
-  - More RISCV support work ([#16976], [#16957], [#16962], [#16832], [#16829])
-  - macOS native menu bar ([#16922])
-  - Font fixes ([#16859])
-  - Rockman 2 audio glitch fix ([#16810], [#16798])
-  - UI fixes: Vertical use of space ([#16795]), scrollbars ([#16785]), touchpad scroll on Windows ([#16699])
-
-Looking for [older news](history.md)?
-
-
-Adhoc support
--------------
+# Upcoming
+Unsure at the moment, this is simply a placeholder
+ 
+# Adhoc support
 Not fully functional, but some games work.  Check the [Ad-Hoc section of the forum](https://forums.ppsspp.org/forumdisplay.php?fid=34) for help.
 
 Credit goes to:
@@ -222,6 +76,10 @@ Credit goes to:
  - [coldbird's code](https://code.google.com/archive/p/aemu/)
  - Kyhel
  - And more, of course.
+
+# FAQ
+If you have any questions/concerns, please check the [FAQ](https://www.ppsspp.org/docs/faq).
+The project founder, Henrik, can be reached through his email, hrydgard+ppsspp@gmail.com.
 
 
 [comment]: # (LINK_LIST_BEGIN_HERE)
